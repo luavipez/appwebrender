@@ -6,7 +6,7 @@ function Users() {
   const [form, setForm] = useState({ usuario: "", nombre: "", direccion: "" });
 
   useEffect(() => {
-    axios.get("/api/users").then((res) => setUsers(res.data));
+    axios.get(`${process.env.REACT_APP_API_URL}/users`).then((res) => setUsers(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
