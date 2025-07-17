@@ -6,13 +6,13 @@ function Products() {
   const [form, setForm] = useState({ nombre: "", marca: "", precio: "" });
 
   useEffect(() => {
-    axios.get("/api/products").then((res) => setProducts(res.data));
+    axios.get(`${process.env.REACT_APP_API_URL}/products`).then((res) => setProducts(res.data));    
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/api/products", form);
-    const res = await axios.get("/api/products");
+    await axios.post(`${process.env.REACT_APP_API_URL}/products`, form);
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
     setProducts(res.data);
     setForm({ nombre: "", marca: "", precio: "" });
   };

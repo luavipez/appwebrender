@@ -11,8 +11,8 @@ function Users() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/api/users", form);
-    const res = await axios.get("/api/users");
+    await axios.post(`${process.env.REACT_APP_API_URL}/users`, form);
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
     setUsers(res.data);
     setForm({ usuario: "", nombre: "", direccion: "" });
   };
